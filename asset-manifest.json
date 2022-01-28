@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/StoryShare/static/css/main.b8cd3b4a.css",
+    "main.js": "/StoryShare/static/js/main.c214e8c8.js",
+    "static/js/379.8c429af3.chunk.js": "/StoryShare/static/js/379.8c429af3.chunk.js",
+    "static/js/335.39553d08.chunk.js": "/StoryShare/static/js/335.39553d08.chunk.js",
+    "static/js/999.fe8809a9.chunk.js": "/StoryShare/static/js/999.fe8809a9.chunk.js",
+    "static/js/651.4d8b0a85.chunk.js": "/StoryShare/static/js/651.4d8b0a85.chunk.js",
+    "static/js/635.db79d0bb.chunk.js": "/StoryShare/static/js/635.db79d0bb.chunk.js",
+    "static/js/675.28ba43c5.chunk.js": "/StoryShare/static/js/675.28ba43c5.chunk.js",
+    "static/js/264.9f75b54d.chunk.js": "/StoryShare/static/js/264.9f75b54d.chunk.js",
+    "static/js/757.0d7bcf0e.chunk.js": "/StoryShare/static/js/757.0d7bcf0e.chunk.js",
+    "static/js/364.20407e57.chunk.js": "/StoryShare/static/js/364.20407e57.chunk.js",
+    "static/js/180.26c94b24.chunk.js": "/StoryShare/static/js/180.26c94b24.chunk.js",
+    "static/js/52.22051921.chunk.js": "/StoryShare/static/js/52.22051921.chunk.js",
+    "static/js/813.a06b212f.chunk.js": "/StoryShare/static/js/813.a06b212f.chunk.js",
+    "static/js/944.efc56ee8.chunk.js": "/StoryShare/static/js/944.efc56ee8.chunk.js",
+    "index.html": "/StoryShare/index.html",
+    "main.b8cd3b4a.css.map": "/StoryShare/static/css/main.b8cd3b4a.css.map",
+    "main.c214e8c8.js.map": "/StoryShare/static/js/main.c214e8c8.js.map",
+    "379.8c429af3.chunk.js.map": "/StoryShare/static/js/379.8c429af3.chunk.js.map",
+    "335.39553d08.chunk.js.map": "/StoryShare/static/js/335.39553d08.chunk.js.map",
+    "999.fe8809a9.chunk.js.map": "/StoryShare/static/js/999.fe8809a9.chunk.js.map",
+    "651.4d8b0a85.chunk.js.map": "/StoryShare/static/js/651.4d8b0a85.chunk.js.map",
+    "635.db79d0bb.chunk.js.map": "/StoryShare/static/js/635.db79d0bb.chunk.js.map",
+    "675.28ba43c5.chunk.js.map": "/StoryShare/static/js/675.28ba43c5.chunk.js.map",
+    "264.9f75b54d.chunk.js.map": "/StoryShare/static/js/264.9f75b54d.chunk.js.map",
+    "757.0d7bcf0e.chunk.js.map": "/StoryShare/static/js/757.0d7bcf0e.chunk.js.map",
+    "364.20407e57.chunk.js.map": "/StoryShare/static/js/364.20407e57.chunk.js.map",
+    "180.26c94b24.chunk.js.map": "/StoryShare/static/js/180.26c94b24.chunk.js.map",
+    "52.22051921.chunk.js.map": "/StoryShare/static/js/52.22051921.chunk.js.map",
+    "813.a06b212f.chunk.js.map": "/StoryShare/static/js/813.a06b212f.chunk.js.map",
+    "944.efc56ee8.chunk.js.map": "/StoryShare/static/js/944.efc56ee8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8cd3b4a.css",
+    "static/js/main.c214e8c8.js"
+  ]
+}
