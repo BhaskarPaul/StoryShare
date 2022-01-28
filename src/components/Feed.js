@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../server';
 import { useNavigate } from 'react-router-dom';
 import { query, collection, where, getDocs } from 'firebase/firestore';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem, useMediaQuery } from '@chakra-ui/react';
 import Card from './Card';
 
 const Feed = () => {
@@ -12,6 +12,7 @@ const Feed = () => {
     const [user, loading, error] = useAuthState(auth);
     const [allPublicStory, setAllPublicStory] = useState([]);
     const [userData, setUserData] = useState({});
+    const [isResponsive] = useMediaQuery('(min-width: 1000px)');
 
     const fetchAllPublicStory = async () => {
         const docs = await getDocs(
@@ -48,11 +49,11 @@ const Feed = () => {
     return (
         <div>
             <Navbar userData={userData} />
-            <Grid templateColumns={'repeat(2, 1fr)'} gap={5}>
+            <Grid templateColumns={isResponsive && 'repeat(2, 1fr)'} gap={5}>
                 {allPublicStory
                     .filter(story => story._id !== user.uid)
                     .map((story, key) => (
-                        <GridItem key={key} colSpan={1}>
+                        <GridItem key={key} colSpan={isResponsive && 1}>
                             <Card story={story} type={'all'} />
                         </GridItem>
                     ))}

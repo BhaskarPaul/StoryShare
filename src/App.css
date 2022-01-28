@@ -18,7 +18,8 @@
 .navbar-heading,
 .signup-heading,
 .login-heading,
-.confirm-window-heading {
+.confirm-window-heading,
+.heading {
     font-family: 'Dongle', sans-serif !important;
     font-size: 60px;
 }
@@ -43,6 +44,7 @@
     padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
+    width: 100%;
 }
 
 .story-card {
@@ -65,4 +67,58 @@
 
 .navbar-link {
     cursor: pointer;
+}
+
+.story-img {
+    max-height: 300px;
+}
+
+.user-information {
+    margin: auto;
+    margin-top: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 20px;
+}
+
+.responsive-navbar {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.responsive-navbar .navbar-active {
+    text-decoration: none;
+    border: none;
+    padding: 0;
+}
+
+.responsive-add-story {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: -30px;
+    cursor: pointer;
+}
+
+.page-loader {
+    height: 100vh;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-box {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.bold {
+    font-weight: bold;
 }

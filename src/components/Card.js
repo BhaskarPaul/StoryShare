@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
     HStack,
     Badge,
@@ -7,6 +7,8 @@ import {
     Heading,
     Button,
     Divider,
+    Image,
+    useMediaQuery,
 } from '@chakra-ui/react';
 import '../App.css';
 import { AiFillLike, AiFillDislike } from 'react-icons/ai';
@@ -28,26 +30,6 @@ import ConfirmWindow from './ConfirmWindow';
 
 Modal.setAppElement('#root');
 
-const customStyles = {
-    content: {
-        width: '600px',
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-    overlay: {
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
-    },
-};
-
 const Card = ({ story, type }) => {
     const state = useContext(RootContext);
     const [like, setLike] = useState({ count: 0, state: 'Like' });
@@ -62,13 +44,27 @@ const Card = ({ story, type }) => {
         type: story.type,
     });
 
-    const handleLike = () => {
-        if (like.state === 'Like')
+    useEffect(() => {
+        setLike({ ...like, count: story.likes });
+    }, []);
+
+    const handleLike = async () => {
+        if (like.state === 'Like') {
             setLike({ state: 'Dislike', count: like.count + 1 });
+            const updateStoryId = await fetchStoryDocumentId(story.storyId);
+            await updateDoc(doc(db, 'stories', updateStoryId), {
+                likes: story.likes + 1,
+            });
+        }
         if (like.state === 'Dislike')
             setLike({ state: 'Like', count: like.count - 1 });
+        const updateStoryId = await fetchStoryDocumentId(story.storyId);
+        await updateDoc(doc(db, 'stories', updateStoryId), {
+            likes: story.likes - 1,
+        });
     };
 
+    // fetch firestore document ID
     const fetchStoryDocumentId = async id => {
         try {
             const docs = await getDocs(
@@ -82,6 +78,7 @@ const Card = ({ story, type }) => {
         }
     };
 
+    // to delete story
     const handleDeleteStory = () => {
         setModalType('delete');
         setModalIsOpen(true);
@@ -104,10 +101,12 @@ const Card = ({ story, type }) => {
         }
     };
 
+    // cancel delete a story
     const cancelDeleteProcess = () => {
         setModalIsOpen(false);
     };
 
+    // to edit story
     const handleEditStory = () => {
         setModalType('edit');
         setModalIsOpen(true);
@@ -140,9 +139,34 @@ const Card = ({ story, type }) => {
         // console.log(newStory);
     };
 
+    // for responsive
+    const [isResponsive] = useMediaQuery('(min-width: 1000px)');
+
+    // modal states
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalType, setModalType] = useState('');
     const closeModal = () => setModalIsOpen(false);
+
+    // modal style
+    const customStyles = {
+        content: {
+            width: isResponsive ? '600px' : 'auto',
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+        overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+        },
+    };
 
     return (
         <div>
@@ -223,6 +247,12 @@ const Card = ({ story, type }) => {
                             {story.createdAt}
                         </small>
                     </Stack>
+                    <Divider />
+                    <Image
+                        className="story-img"
+                        src={story.url}
+                        alt="cover image"
+                    />
                     <Divider />
                     <p style={{ textAlign: 'left' }}>{story.content}</p>
                     {type === 'user' && (

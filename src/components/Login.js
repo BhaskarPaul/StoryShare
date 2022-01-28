@@ -7,6 +7,7 @@ import {
     Button,
     Heading,
     HStack,
+    useMediaQuery,
 } from '@chakra-ui/react';
 import AlertMessage from './AlertMessage';
 import { Link, useNavigate } from 'react-router-dom';
@@ -22,6 +23,7 @@ const Login = ({ formValue, setFormValue }) => {
     const [isAllField, setIsAllField] = useState(false);
     const [user, loading, error] = useAuthState(auth);
     const [alert, setAlert] = useState({ message: '', visible: false });
+    const [isResponsive] = useMediaQuery('(min-width: 1000px)');
 
     useEffect(() => {
         if (formValue.email !== '' && formValue.password !== '')
@@ -61,7 +63,10 @@ const Login = ({ formValue, setFormValue }) => {
     };
 
     return (
-        <>
+        <div
+            className="user-information"
+            style={{ width: isResponsive ? '400px' : 'auto' }}
+        >
             {alert.visible && (
                 <AlertMessage
                     message={alert.message}
@@ -122,7 +127,7 @@ const Login = ({ formValue, setFormValue }) => {
                     </div>
                     <HStack justify={'space-between'}>
                         <div>
-                            Have not signed up? Create an account{' '}
+                            Have not signed up?{' '}
                             <Link
                                 to={'/signup'}
                                 style={{
@@ -130,7 +135,7 @@ const Login = ({ formValue, setFormValue }) => {
                                     textDecoration: 'underline',
                                 }}
                             >
-                                Signup
+                                Create an account
                             </Link>
                         </div>
                         <div>
@@ -147,7 +152,7 @@ const Login = ({ formValue, setFormValue }) => {
                     </HStack>
                 </VStack>
             </FormControl>
-        </>
+        </div>
     );
 };
 

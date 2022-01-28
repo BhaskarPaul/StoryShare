@@ -9,6 +9,7 @@ import {
     Heading,
     InputGroup,
     InputRightElement,
+    useMediaQuery,
 } from '@chakra-ui/react';
 import BarLoader from 'react-spinners/BarLoader';
 import AlertMessage from './AlertMessage';
@@ -22,6 +23,7 @@ const Signup = ({ formValue, setFormValue }) => {
     const [user, loading, error] = useAuthState(auth);
     const [isAllField, setIsAllField] = useState(false);
     const [alert, setAlert] = useState({ message: '', visible: false });
+    const [isResponsive] = useMediaQuery('(min-width: 1000px)');
 
     useEffect(() => {
         if (
@@ -57,7 +59,10 @@ const Signup = ({ formValue, setFormValue }) => {
     if (loading) return <BarLoader />;
 
     return (
-        <>
+        <div
+            className="user-information"
+            style={{ width: isResponsive ? '400px' : 'auto' }}
+        >
             {alert.visible && (
                 <AlertMessage
                     message={alert.message}
@@ -175,7 +180,7 @@ const Signup = ({ formValue, setFormValue }) => {
                         </Button>
                     </div>
                     <div>
-                        Have already an account?
+                        Have already an account?{' '}
                         <Link
                             to={'/login'}
                             style={{
@@ -188,7 +193,7 @@ const Signup = ({ formValue, setFormValue }) => {
                     </div>
                 </VStack>
             </FormControl>
-        </>
+        </div>
     );
 };
 

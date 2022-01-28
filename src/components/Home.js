@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem, useMediaQuery } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import AlertMessage from './AlertMessage';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -16,6 +16,7 @@ const Home = () => {
     const [alert, setAlert] = useState({ message: '', visible: false });
     const [userData, setUserData] = useState({});
     const [user, loading, error] = useAuthState(auth);
+    const [isResponsive] = useMediaQuery('(min-width: 1000px)');
 
     useEffect(() => {
         if (!user) navigate('/login');
@@ -24,6 +25,10 @@ const Home = () => {
     useEffect(() => {
         fetchUserData();
     }, []);
+
+    // useEffect(() => {
+    //     console.log(isResponsive);
+    // }, [isResponsive]);
 
     const fetchUserData = async () => {
         try {
@@ -52,14 +57,31 @@ const Home = () => {
             )}
             <Navbar userData={userData} />
             <div className="story-body">
-                <Grid templateColumns={'repeat(5, 1fr)'} gap={5}>
-                    <GridItem colSpan={3}>
-                        <ShowUserStory />
-                    </GridItem>
-                    <GridItem colSpan={2}>
-                        <AddUserStory creatorName={userData.name} />
-                    </GridItem>
-                </Grid>
+                {isResponsive ? (
+                    <Grid
+                        templateColumns={isResponsive && 'repeat(5, 1fr)'}
+                        gap={5}
+                    >
+                        <GridItem colSpan={3}>
+                            <ShowUserStory />
+                        </GridItem>
+                        <GridItem colSpan={2}>
+                            <AddUserStory creatorName={userData.name} />
+                        </GridItem>
+                    </Grid>
+                ) : (
+                    <Grid
+                        // templateColumns={isResponsive && 'repeat(5, 1fr)'}
+                        gap={5}
+                    >
+                        <GridItem>
+                            <AddUserStory creatorName={userData.name} />
+                        </GridItem>
+                        <GridItem>
+                            <ShowUserStory />
+                        </GridItem>
+                    </Grid>
+                )}
             </div>
         </div>
     );

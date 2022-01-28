@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { Container } from '@chakra-ui/react';
-import Signup from './components/Signup';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import Login from './components/Login';
-import Home from './components/Home';
-import ForgotPassword from './components/ForgotPassword';
-import Feed from './components/Feed';
+import PageLoading from './components/PageLoading';
+
+// lazy import
+const Signup = lazy(() => import('./components/Signup'));
+const Login = lazy(() => import('./components/Login'));
+const Home = lazy(() => import('./components/Home'));
+const ForgotPassword = lazy(() => import('./components/ForgotPassword'));
+const Feed = lazy(() => import('./components/Feed'));
+const UserProfile = lazy(() => import('./components/UserProfile'));
 
 const App = () => {
     const navigate = useNavigate();
@@ -23,25 +27,58 @@ const App = () => {
                 <Route
                     path="signup"
                     element={
-                        <Signup
-                            formValue={formValue}
-                            setFormValue={setFormValue}
-                        />
+                        <Suspense fallback={<PageLoading />}>
+                            <Signup
+                                formValue={formValue}
+                                setFormValue={setFormValue}
+                            />
+                        </Suspense>
                     }
                 />
                 <Route path="/" element={<Navigate replace to="/signup" />} />
                 <Route
                     path="login"
                     element={
-                        <Login
-                            formValue={formValue}
-                            setFormValue={setFormValue}
-                        />
+                        <Suspense fallback={<PageLoading />}>
+                            <Login
+                                formValue={formValue}
+                                setFormValue={setFormValue}
+                            />
+                        </Suspense>
                     }
                 />
-                <Route path="home" element={<Home />} />
-                <Route path="forgot" element={<ForgotPassword />} />
-                <Route path="feed" element={<Feed />} />
+                <Route
+                    path="home"
+                    element={
+                        <Suspense fallback={<PageLoading />}>
+                            <Home />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="forgot"
+                    element={
+                        <Suspense fallback={<PageLoading />}>
+                            <ForgotPassword />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="feed"
+                    element={
+                        <Suspense fallback={<PageLoading />}>
+                            <Feed />
+                        </Suspense>
+                    }
+                />
+                <Route
+                    path="profile"
+                    element={
+                        <Suspense fallback={<PageLoading />}>
+                            <UserProfile />
+                        </Suspense>
+                    }
+                ></Route>
             </Routes>
         </Container>
     );

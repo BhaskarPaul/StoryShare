@@ -51,6 +51,8 @@ const EditUserStory = ({
                         setNewStory({ ...newStory, content: e.target.value })
                     }
                 />
+                <FormLabel>Want to change story cover image?</FormLabel>
+                <Input type={'file'} />
                 <FormLabel as="legend">Select your story privacy</FormLabel>
                 <RadioGroup
                     defaultValue={newStory.type}
