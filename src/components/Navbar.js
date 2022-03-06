@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { BarLoader } from 'react-spinners';
 import { signOut } from 'firebase/auth';
-import { useLocation, useNavigate, NavLink } from 'react-router-dom';
+import { useLocation, useNavigate, NavLink, Link } from 'react-router-dom';
 import { auth } from '../server';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiOutlineMenu, AiFillCloseCircle } from 'react-icons/ai';
@@ -87,15 +87,17 @@ const Navbar = ({ userData }) => {
                                 <PopoverTrigger>
                                     <HStack spacing={5} className="navbar-user">
                                         <p>{userData.name}</p>
-                                        <Avatar src="https://image.shutterstock.com/image-vector/young-man-face-cartoon-260nw-1224888760.jpg" />
+                                        <Avatar src={userData.profileUrl} />
                                     </HStack>
                                 </PopoverTrigger>
                                 <Portal>
                                     <PopoverContent className="navbar-user-portal">
                                         <PopoverArrow />
-                                        <PopoverHeader>
-                                            Your Profile
-                                        </PopoverHeader>
+                                        <Link to={'/profile'}>
+                                            <PopoverHeader>
+                                                Edit Profile
+                                            </PopoverHeader>
+                                        </Link>
                                         <PopoverCloseButton />
                                         <PopoverBody>
                                             <HStack>

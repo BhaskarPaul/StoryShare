@@ -48,6 +48,8 @@ const Card = ({ story, type }) => {
         setLike({ ...like, count: story.likes });
     }, []);
 
+    // FIXME: Not working
+    // TODO: create handlelike function to work perfectly
     const handleLike = async () => {
         if (like.state === 'Like') {
             setLike({ state: 'Dislike', count: like.count + 1 });

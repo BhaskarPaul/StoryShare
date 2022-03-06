@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { Progress } from '@chakra-ui/react';
 import useStorage from '../hooks/useStorage';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../server';
 
 const ProgressBar = ({ file, setFile, story, setStory }) => {
     const { progress, url, error } = useStorage(file);
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
         if (url) {

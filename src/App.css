@@ -122,3 +122,7 @@
 .bold {
     font-weight: bold;
 }
+
+.update-badge {
+    cursor: pointer !important;
+}
