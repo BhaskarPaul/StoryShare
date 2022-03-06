@@ -1,6 +1,5 @@
 {
-    "homepage": "http://bhaskarpaul.github.io/StoryShare",
-    "name": "try-firebase",
+   "name": "try-firebase",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
