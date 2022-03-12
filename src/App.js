@@ -22,65 +22,70 @@ const App = () => {
     });
 
     return (
-        <Container maxW="container.xl">
-            <Routes>
-                <Route
-                    path="signup"
-                    element={
-                        <Suspense fallback={<PageLoading />}>
-                            <Signup
-                                formValue={formValue}
-                                setFormValue={setFormValue}
-                            />
-                        </Suspense>
-                    }
-                />
-                <Route path="/" element={<Navigate replace to="/signup" />} />
-                <Route
-                    path="login"
-                    element={
-                        <Suspense fallback={<PageLoading />}>
-                            <Login
-                                formValue={formValue}
-                                setFormValue={setFormValue}
-                            />
-                        </Suspense>
-                    }
-                />
-                <Route
-                    path="home"
-                    element={
-                        <Suspense fallback={<PageLoading />}>
-                            <Home />
-                        </Suspense>
-                    }
-                />
-                <Route
-                    path="forgot"
-                    element={
-                        <Suspense fallback={<PageLoading />}>
-                            <ForgotPassword />
-                        </Suspense>
-                    }
-                />
-                <Route
-                    path="feed"
-                    element={
-                        <Suspense fallback={<PageLoading />}>
-                            <Feed />
-                        </Suspense>
-                    }
-                />
-                <Route
-                    path="profile"
-                    element={
-                        <Suspense fallback={<PageLoading />}>
-                            <UserProfile />
-                        </Suspense>
-                    }
-                ></Route>
-            </Routes>
-        </Container>
+        <div>
+            <Container maxW="container.xl">
+                <Routes>
+                    <Route
+                        path="signup"
+                        element={
+                            <Suspense fallback={<PageLoading />}>
+                                <Signup
+                                    formValue={formValue}
+                                    setFormValue={setFormValue}
+                                />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="/"
+                        element={<Navigate replace to="/signup" />}
+                    />
+                    <Route
+                        path="login"
+                        element={
+                            <Suspense fallback={<PageLoading />}>
+                                <Login
+                                    formValue={formValue}
+                                    setFormValue={setFormValue}
+                                />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="home"
+                        element={
+                            <Suspense fallback={<PageLoading />}>
+                                <Home />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="forgot"
+                        element={
+                            <Suspense fallback={<PageLoading />}>
+                                <ForgotPassword />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="feed"
+                        element={
+                            <Suspense fallback={<PageLoading />}>
+                                <Feed />
+                            </Suspense>
+                        }
+                    />
+                    <Route
+                        path="profile"
+                        element={
+                            <Suspense fallback={<PageLoading />}>
+                                <UserProfile />
+                            </Suspense>
+                        }
+                    ></Route>
+                </Routes>
+            </Container>
+        </div>
     );
 };
 

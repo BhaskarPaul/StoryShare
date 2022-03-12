@@ -93,22 +93,24 @@ const Navbar = ({ userData }) => {
                                 <Portal>
                                     <PopoverContent className="navbar-user-portal">
                                         <PopoverArrow />
-                                        <Link to={'/profile'}>
-                                            <PopoverHeader>
-                                                Edit Profile
-                                            </PopoverHeader>
-                                        </Link>
+                                        <PopoverHeader>
+                                            {userData.email}
+                                        </PopoverHeader>
                                         <PopoverCloseButton />
                                         <PopoverBody>
-                                            <HStack>
-                                                <p>{userData.email}</p>
+                                            <Stack>
+                                                <Button>
+                                                    <Link to={'/profile'}>
+                                                        Edit Profile
+                                                    </Link>
+                                                </Button>
                                                 <Button
                                                     colorScheme="orange"
                                                     onClick={handleSignOut}
                                                 >
                                                     Sign Out
                                                 </Button>
-                                            </HStack>
+                                            </Stack>
                                         </PopoverBody>
                                     </PopoverContent>
                                 </Portal>

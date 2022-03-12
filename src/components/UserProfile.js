@@ -22,6 +22,7 @@ import {
     Badge,
     FormLabel,
     Input,
+    Tooltip,
 } from '@chakra-ui/react';
 import '../App.css';
 import { signOut } from 'firebase/auth';
@@ -232,7 +233,9 @@ const UserProfile = () => {
                     </HStack>
                     <Divider />
                     <HStack justifyContent={'space-between'}>
-                        <Button colorScheme={'blue'}>Edit Profile</Button>
+                        <Button colorScheme={'blue'} disabled>
+                            Edit Profile
+                        </Button>
                         <Button colorScheme={'orange'} onClick={handleSignOut}>
                             Log out
                         </Button>
@@ -248,15 +251,25 @@ const UserProfile = () => {
                         <p className="bold">{stats.upload}</p>
                     </HStack>
                     <Divider />
-                    <HStack justifyContent={'space-between'}>
-                        <p>Total like(s)</p>
-                        <p className="bold">{stats.likes}</p>
-                    </HStack>
+                    <Tooltip label="this feature will not work now ... still under development">
+                        <HStack
+                            justifyContent={'space-between'}
+                            className="disable"
+                        >
+                            <p>Total like(s)</p>
+                            <p className="bold">0</p>
+                        </HStack>
+                    </Tooltip>
                     <Divider />
-                    <HStack justifyContent={'space-between'}>
-                        <p>Total view(s)</p>
-                        <p className="bold">{stats.views}</p>
-                    </HStack>
+                    <Tooltip label="this feature will not work now ... still under development">
+                        <HStack
+                            className="disable"
+                            justifyContent={'space-between'}
+                        >
+                            <p>Total view(s)</p>
+                            <p className="bold">0</p>
+                        </HStack>
+                    </Tooltip>
                 </Stack>
             </div>
         </div>

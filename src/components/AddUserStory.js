@@ -10,6 +10,7 @@ import {
     Textarea,
     Button,
     useMediaQuery,
+    Stack,
 } from '@chakra-ui/react';
 import '../App.css';
 import { auth, db, stringDate } from '../server';
@@ -129,67 +130,89 @@ const AddUserStory = ({ creatorName }) => {
                         />
                     )}
                     <FormControl isRequired>
-                        <FormLabel htmlFor="story-heading">Heading</FormLabel>
-                        <Input
-                            id="story-heading"
-                            type="text"
-                            placeholder="Your story heading..."
-                            value={story.heading}
-                            onChange={e =>
-                                setStory({ ...story, heading: e.target.value })
-                            }
-                        />
-                        <FormLabel htmlFor="story-content">Content</FormLabel>
-                        <Textarea
-                            placeholder="Your story content..."
-                            value={story.content}
-                            onChange={e =>
-                                setStory({ ...story, content: e.target.value })
-                            }
-                        />
-                        <FormLabel htmlFor="image">
-                            Upload story image
-                        </FormLabel>
-                        <Input
-                            id="image"
-                            type="file"
-                            placeholder="upload image here..."
-                            onChange={e => uploadImage(e.target.files[0])}
-                        />
-                        {file && (
-                            <ProgressBar
-                                file={file}
-                                setFile={setFile}
-                                story={story}
-                                setStory={setStory}
-                            />
-                        )}
-                        <FormLabel as="legend">
-                            Select your story privacy
-                        </FormLabel>
-                        <RadioGroup
-                            defaultValue={story.type}
-                            onChange={value =>
-                                setStory({ ...story, type: value })
-                            }
-                        >
-                            <HStack spacing="24px">
-                                <Radio value="public">Public</Radio>
-                                <Radio value="private">Private</Radio>
-                            </HStack>
-                        </RadioGroup>
-                        <FormHelperText>
-                            Default story type is Public
-                        </FormHelperText>
-                        <Button
-                            isLoading={isloading}
-                            disabled={!isAllField}
-                            colorScheme="teal"
-                            variant="solid"
-                            onClick={createStory}
-                        >
-                            Create story
-                        </Button>
+                        <Stack spacing={'15px'}>
+                            <div>
+                                <FormLabel htmlFor="story-heading">
+                                    Heading
+                                </FormLabel>
+                                <Input
+                                    id="story-heading"
+                                    type="text"
+                                    placeholder="Your story heading..."
+                                    value={story.heading}
+                                    onChange={e =>
+                                        setStory({
+                                            ...story,
+                                            heading: e.target.value,
+                                        })
+                                    }
+                                />
+                            </div>
+                            <div>
+                                <FormLabel htmlFor="story-content">
+                                    Content
+                                </FormLabel>
+                                <Textarea
+                                    placeholder="Your story content..."
+                                    value={story.content}
+                                    onChange={e =>
+                                        setStory({
+                                            ...story,
+                                            content: e.target.value,
+                                        })
+                                    }
+                                />
+                            </div>
+                            <div>
+                                <FormLabel htmlFor="image">
+                                    Upload story image
+                                </FormLabel>
+                                <Input
+                                    id="image"
+                                    type="file"
+                                    placeholder="upload image here..."
+                                    onChange={e =>
+                                        uploadImage(e.target.files[0])
+                                    }
+                                />
+                            </div>
+                            {file && (
+                                <ProgressBar
+                                    file={file}
+                                    setFile={setFile}
+                                    story={story}
+                                    setStory={setStory}
+                                />
+                            )}
+                            <div>
+                                <FormLabel as="legend">
+                                    Select your story privacy
+                                </FormLabel>
+                                <RadioGroup
+                                    defaultValue={story.type}
+                                    onChange={value =>
+                                        setStory({ ...story, type: value })
+                                    }
+                                >
+                                    <HStack spacing="24px">
+                                        <Radio value="public">Public</Radio>
+                                        <Radio value="private">Private</Radio>
+                                    </HStack>
+                                </RadioGroup>
+                                <FormHelperText>
+                                    Default story type is Public
+                                </FormHelperText>
+                            </div>
+                            <Button
+                                isLoading={isloading}
+                                disabled={!isAllField}
+                                colorScheme="teal"
+                                variant="solid"
+                                onClick={createStory}
+                            >
+                                Create story
+                            </Button>
+                        </Stack>
                     </FormControl>
                 </div>
             )}

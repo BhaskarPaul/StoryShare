@@ -4,6 +4,13 @@
     font-family: 'Dongle', sans-serif;
 }
 
+/* TODO: this css will be needed when dark theme will be introduced */
+/* #black-theme {
+    min-height: 100vh;
+    background-color: #121212;
+    color: white;
+} */
+
 .navbar {
     margin-top: 20px;
     /* background-color: yellow; */
@@ -25,7 +32,7 @@
 }
 
 .navbar-user {
-    background-color: lightgray;
+    border: 1px solid rgba(177, 177, 177, 0.644);
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -42,14 +49,14 @@
 .create-story {
     font-size: 25px;
     padding: 20px;
-    border: 1px solid black;
+    border: 1px solid rgba(177, 177, 177, 0.644);
     border-radius: 10px;
     width: 100%;
 }
 
 .story-card {
     padding: 20px;
-    border: 1px solid black;
+    border: 1px solid rgba(177, 177, 177, 0.644);
     border-radius: 10px;
     margin-bottom: '30px' !important;
 }
@@ -59,10 +66,7 @@
 }
 
 .navbar-active {
-    color: red;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 0 15px 0 15px;
+    border-bottom: 2px solid rgba(177, 177, 177, 0.644);
 }
 
 .navbar-link {
@@ -95,7 +99,7 @@
 
 .responsive-add-story {
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid rgba(177, 177, 177, 0.644);
     border-radius: 5px;
     margin-bottom: -30px;
     cursor: pointer;
@@ -110,7 +114,7 @@
 }
 
 .user-box {
-    border: 1px solid black;
+    border: 1px solid rgba(177, 177, 177, 0.644);
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
@@ -125,4 +129,9 @@
 
 .update-badge {
     cursor: pointer !important;
+}
+
+.disable {
+    cursor: not-allowed;
+    color: rgb(194, 194, 194);
 }
