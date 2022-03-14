@@ -61,7 +61,7 @@ const Signup = ({ formValue, setFormValue }) => {
     return (
         <div
             className="user-information"
-            style={{ width: isResponsive ? '400px' : 'auto' }}
+            style={{ width: isResponsive ? '600px' : 'auto' }}
         >
             {alert.visible && (
                 <AlertMessage
@@ -78,7 +78,7 @@ const Signup = ({ formValue, setFormValue }) => {
                     marginTop: alert.visible && '30px',
                 }}
             >
-                Registration form
+                Sign Up
             </Heading>
             <FormControl isRequired>
                 <VStack spacing={4} align="stretch">
@@ -132,6 +132,7 @@ const Signup = ({ formValue, setFormValue }) => {
                                     h="1.75rem"
                                     size="sm"
                                     colorScheme={'blue'}
+                                    disabled
                                     // onClick={verifyEmailId}
                                 >
                                     Verify

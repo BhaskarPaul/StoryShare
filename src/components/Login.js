@@ -65,7 +65,7 @@ const Login = ({ formValue, setFormValue }) => {
     return (
         <div
             className="user-information"
-            style={{ width: isResponsive ? '400px' : 'auto' }}
+            style={{ width: isResponsive ? '600px' : 'auto' }}
         >
             {alert.visible && (
                 <AlertMessage
@@ -142,7 +142,8 @@ const Login = ({ formValue, setFormValue }) => {
                             <Link
                                 to={'/forgot'}
                                 style={{
-                                    color: 'blue',
+                                    pointerEvents: 'none',
+                                    color: 'gray',
                                     textDecoration: 'underline',
                                 }}
                             >

@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
 * {
-    font-family: 'Dongle', sans-serif;
+    /* font-family: 'Dongle', sans-serif; */
+    font-family: 'Work Sans', sans-serif;
 }
 
 /* TODO: this css will be needed when dark theme will be introduced */
@@ -27,7 +30,7 @@
 .login-heading,
 .confirm-window-heading,
 .heading {
-    font-family: 'Dongle', sans-serif !important;
+    /* font-family: 'Dongle', sans-serif !important; */
     font-size: 60px;
 }
 
@@ -61,9 +64,9 @@
     margin-bottom: '30px' !important;
 }
 
-.story-heading {
+/* .story-heading {
     font-family: 'Dongle', sans-serif !important;
-}
+} */
 
 .navbar-active {
     border-bottom: 2px solid rgba(177, 177, 177, 0.644);

@@ -46,6 +46,9 @@ const ShowUserStory = () => {
                 <option value="public">Public</option>
                 <option value="private">Private</option>
             </Select>
+            {state.rootStories.length === 0 && (
+                <div>No stories to show ... </div>
+            )}
             {state.rootStories
                 .filter(story => {
                     if (
